@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Untitled Document</title>
+        <script type="text/javascript" src="includes/jquery-1.11.1.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="includes/style.css" />
+    </head>
+    
+    <body>
+    	<div id="loader" class="loader"></div>
+        <ul></ul><br/><br/>
+    	<div id="content"></div>
+    </body>
+    <script>
+		// server sided script
+		var retrieveScript = "test 1 - script.php?page=index";
+		var menuRetrieveScript = "test 2 - menu.php";
+		// JSON data returned from server
+		var json;
+
+		// send request to get content
+		$.ajax({
+			type: "GET",
+			url: retrieveScript,
+			contentType: "application/json",
+			success: onResponse,
+			error: onError
+		});
+		
+		// send request to get menu items
+		$.ajax({
+			type: "GET",
+			url: menuRetrieveScript,
+			contentType: "application/json",
+			success: onResponseMenu,
+			error: onError
+		});
+		
+		function onError() {
+		}
+		
+		
+		
+		function onResponseMenu(result, textStatus, xmlhttp) {
+			json = JSON.parse(xmlhttp.responseText);
+			var i;
+			var out = "";
+			totalData = json.length;
+			for (i = 0; i < totalData; i++) {
+				if (json[i].linkUnderPage === "") {
+					
+					out += "<li id=\"" + ((json[i].pageMenu == 1) ? "" : json[i].page)  + "\">";
+					out += json[i].pageLinkName;
+					out += "<ul>";
+					for (var n = 0; n < totalData; n++) {
+						if (json[i].page === json[n].linkUnderPage) {
+							out += "<li id=\"" + json[n].page + "\">";
+							out += json[n].pageLinkName + "</li>";
+						}
+					}
+					out += "</ul>";
+					out += "</li>";
+				}
+			}
+			
+			
+			
+			$("body > ul").html(out);
+			
+			$( "li" ).click(function(event) {
+				if (event.target.id != "") {
+					$("#loader").fadeIn(0);
+				  // send request to get pictures from JSON
+					$.ajax({
+						type: "GET",
+						url: "test 1 - script.php?page=" + event.target.id,
+						contentType: "application/json",
+						success: onResponse,
+						error: onError
+					});
+				}
+			});
+			
+		}
+		
+		function onResponse(result, textStatus, xmlhttp) {
+			json = JSON.parse(xmlhttp.responseText);
+			var i;
+			var out = "";
+			totalData = json.length;
+			for (i = 0; i < totalData; i++) {
+				out += "<div id=\"" + json[i].ID + "\"><div><h2>" + json[i].contentTitle +
+				"</h2></div>" + base64_decode(json[i].content) +
+				"</div>";
+			}
+			$("#content").html(out);
+			
+			$("#loader").delay(800).fadeOut("slow");
+		}
+		
+		base64_decode = function(s) {
+			var e={},i,b=0,c,x,l=0,a,r='',w=String.fromCharCode,L=s.length;
+			var A="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+			for(i=0;i<64;i++){e[A.charAt(i)]=i;}
+			for(x=0;x<L;x++){
+				c=e[s.charAt(x)];b=(b<<6)+c;l+=6;
+				while(l>=8){((a=(b>>>(l-=8))&0xff)||(x<(L-2)))&&(r+=w(a));}
+			}
+			return r;
+		};
+		
+		
+		
+	</script>
+</html>
+
