@@ -10,15 +10,15 @@
     <body>
     	<div id="loader" class="loader"></div>
         <nav><ul></ul></nav>
-    	<div id="content"></div>
+    	<div style="width:100%; height:auto;"><div id="content"></div></div>
     </body>
     <script>
-		// server sided script
+		// server sided script to retrieve the json for the content
 		var retrieveScript = "test 1 - script.php?page=index";
+		//server sided script to retreive the menu content
 		var menuRetrieveScript = "test 2 - menu.php";
 		// JSON data returned from server
 		var json;
-
 		// send request to get content
 		$.ajax({
 			type: "GET",
@@ -27,7 +27,6 @@
 			success: onResponse,
 			error: onError
 		});
-		
 		// send request to get menu items
 		$.ajax({
 			type: "GET",
@@ -61,6 +60,7 @@
 					}
 					out += "</ul>";
 					out += "</li>";
+					
 				}
 			}
 			

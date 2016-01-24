@@ -8,13 +8,18 @@
 	background: url('../images/page-loader.gif') 50% 50% no-repeat rgb(249,249,249);
 }
 
+#content {
+	margin: 0 auto;
+	width:800px;
+}
+
 #content > div {
 	border: thin solid rgba(0,0,0,1.00);
 	padding-bottom: 5px;
 	padding-left:5px;
 	padding-right:5px;
 	margin-bottom: 15px;
-	width:800px;
+	width:100%;
 }
 
 #content  > div > div:first-child {
@@ -30,7 +35,9 @@
 nav {
 	width:100%;
 	height:auto;
-	margin-bottom:10px;	
+	margin-bottom:10px;
+	text-align:center;
+	background:rgba(179,120,91,1.00);
 }
 
 ul {
@@ -45,11 +52,12 @@ ul {
 }
 ul li {
   font: bold 18px/18px sans-serif;
+  color:#fff;
   display: inline-block;
   margin-right: -4px;
   position: relative;
   padding: 15px 20px;
-  background: #fff;
+  background: rgba(179,120,91,1.00);
   cursor: pointer;
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
