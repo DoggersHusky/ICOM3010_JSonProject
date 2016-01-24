@@ -27,6 +27,12 @@
 	text-align:center;
 }
 
+nav {
+	width:100%;
+	height:auto;
+	margin-bottom:10px;	
+}
+
 ul {
   text-align: left;
   display: inline;
@@ -38,7 +44,7 @@ ul {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
 }
 ul li {
-  font: bold 12px/18px sans-serif;
+  font: bold 18px/18px sans-serif;
   display: inline-block;
   margin-right: -4px;
   position: relative;
