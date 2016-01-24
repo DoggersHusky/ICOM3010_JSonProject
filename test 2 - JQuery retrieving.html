@@ -64,8 +64,6 @@
 				}
 			}
 			
-			
-			
 			$("nav > ul").html(out);
 			
 			$( "li" ).click(function(event) {
@@ -91,7 +89,6 @@
 			totalData = json.length;
 			for (i = 0; i < totalData; i++) {
 				out += "<div id=\"" + json[i].ID + "\"><div><h2>" + json[i].contentTitle +
-				//"</h2></div>" + base64_decode(json[i].content) +
 				"</h2></div>" + htmlspecialchars_decode(json[i].content) +
 				"</div>";
 			}
