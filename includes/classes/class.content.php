@@ -1,5 +1,4 @@
 <?php
-	require('class.data.php');
 	class Content extends mysqli{
 		
 		protected $_jsonString;
