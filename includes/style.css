@@ -1,3 +1,6 @@
+body {
+	background: #e9eaed;	
+}
 .loader {
 	position: fixed;
 	left: 0px;
@@ -14,18 +17,19 @@
 }
 
 #content > div {
-	border: thin solid rgba(0,0,0,1.00);
+	border: thin solid rgba(223,224,228,1.00);
 	padding-bottom: 5px;
 	padding-left:5px;
 	padding-right:5px;
 	margin-bottom: 15px;
 	width:100%;
+	background:#ffffff;
 }
 
 #content  > div > div:first-child {
 	border-left: none;
 	border-right: none;
-	border-bottom: thin solid rgba(0,0,0,1.00);
+	border-bottom: thin solid rgba(223,224,228,1.00);
 	border-top: none;
 	padding-bottom: 5px;
 	margin-bottom: 15px;
