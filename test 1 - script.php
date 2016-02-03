@@ -12,7 +12,7 @@
 	
 	if (isset($_GET['page']) and $page == "index"){
 		//this is the index page will be used to show recent examples
-		echo $conn->content("SELECT * FROM information WHERE display<>1 ORDER BY ID DESC LIMIT 1, 3");
+		echo $conn->content("SELECT * FROM information WHERE display<>1 ORDER BY ID DESC");
 	}else{
 		if (isset($_GET['id'])) {
 			//query the database and pull the results
@@ -21,7 +21,7 @@
 		}else{
 			//query the database and pull the results
 			//select everything from the information table
-			echo $conn->content("SELECT * FROM information WHERE page='$page'");
+			echo $conn->content("SELECT * FROM information WHERE page='$page' ORDER BY ID DESC");
 		}
 	}
 	
