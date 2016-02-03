@@ -129,7 +129,7 @@
                 
                 <textarea name="editor1" id="editor1" rows="10" cols="80"></textarea><br/>
 
-                <input class="btn btn-lg btn-primary" id="btnSubmit" type="button" value="Submit" class="buttons" />
+                <input class="btn btn-lg btn-primary" id="btnSubmit" type="button" value="Save!" class="buttons" />
             <!-- /END THE FEATURETTES -->
             </form>
             
